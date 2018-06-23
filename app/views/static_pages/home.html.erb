@@ -1,1 +1,14 @@
 <h1>Home page</h1>
+<%= form_tag("/", method: 'get') do %>
+ <%= label_tag(:user_id, "Search by User id: ") %>
+ <%= text_field_tag :user_id %>
+ <%= submit_tag "Search" %>
+<% end %>
+<% if @photo_list.present? %>
+  <% @photo_list.each do |photo| %>
+    <div>
+    <h3><%= photo.title %></h3>
+    <%= image_tag photo_url photo %><br>
+    </div>
+  <% end %>
+<% end %>
